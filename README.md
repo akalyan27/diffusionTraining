@@ -22,7 +22,7 @@ Full Pipeline: Contains functions for the forward diffusion process, reverse sam
 
 The model is divided into three primary Python files for maximum clarity and organization:
 
-#### unetModel.py
+### unetModel.py
 
 - Modified UNet architecture as described in the DDPM paper and implemented in https://github.com/mattroz/diffusion-ddpm/blob/main/src/model/unet.py
 
@@ -34,7 +34,7 @@ Class Conditioning: Includes a nn.Embedding layer to allow for class-conditional
 
 Downsample/Upsample Blocks: Uses standard convolutional blocks with Group Normalization and SiLU activation.
 
-#### layers.py
+### layers.py
 
 Contains all the reusable building blocks for the U-Net:
 
@@ -46,7 +46,7 @@ ConvBlock, AttentionBlock: Standard utility modules for convolution and self-att
 
 ConvDownBlock, ConvUpBlock, AttentionDownBlock, AttentionUpBlock: Combination blocks used to structure the encoder and decoder paths of the U-Net.
 
-#### myDiffusionModel.py
+### myDiffusionModel.py
 
 This file handles the high-level diffusion process logic:
 
@@ -68,44 +68,42 @@ Installation Steps
 
 Clone the repository:
 
-'''bash
-'''bash
+```bash
  git clone https://github.com/akalyan27/diffusionTraining.git
-cd diffusion-model-scratch
-''' 
+ cd diffusion-model-scratch
+```
 
 Install dependencies:
 The project relies on PyTorch, NumPy, and Matplotlib. All required packages are listed in requirements.txt.
 
-'''bash
+```bash
  pip install -r requirements.txt 
- '''
+```
 
 
 ## Usage
 
 1. Training the Model
 
-
 2. Generating Images
 
 To demonstrate the reverse sampling process, you can run the main logic within myDiffusionModel.py. The provided snippet in this file shows how to set up the model and perform the sampling process:
 
-'''python
 From myDiffusionModel.py
+```python
 if __name__ == "__main__":
     # ... setup code ...
     generated_images = reverse_sampling(
         # ... arguments for the UNet model, schedule parameters, etc.
     )
     # ... visualization code ...
-'''
+```
 
 To execute the current main file:
 
-'''bash
+```bash
  python myDiffusionModel.py
- '''
+ ```
 
 
 This script will initialize the U-Net, run the reverse diffusion process, and display a set of intermediate generated images using Matplotlib.
