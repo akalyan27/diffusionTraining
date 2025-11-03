@@ -68,14 +68,18 @@ Installation Steps
 
 Clone the repository:
 
-''' git clone https://github.com/akalyan27/diffusionTraining.git
+'''bash
+'''bash
+ git clone https://github.com/akalyan27/diffusionTraining.git
 cd diffusion-model-scratch
 ''' 
 
 Install dependencies:
 The project relies on PyTorch, NumPy, and Matplotlib. All required packages are listed in requirements.txt.
 
-''' pip install -r requirements.txt '''
+'''bash
+ pip install -r requirements.txt 
+ '''
 
 
 ## Usage
@@ -87,7 +91,7 @@ The project relies on PyTorch, NumPy, and Matplotlib. All required packages are 
 
 To demonstrate the reverse sampling process, you can run the main logic within myDiffusionModel.py. The provided snippet in this file shows how to set up the model and perform the sampling process:
 
-'''
+'''python
 From myDiffusionModel.py
 if __name__ == "__main__":
     # ... setup code ...
@@ -99,7 +103,9 @@ if __name__ == "__main__":
 
 To execute the current main file:
 
-''' python myDiffusionModel.py '''
+'''bash
+ python myDiffusionModel.py
+ '''
 
 
 This script will initialize the U-Net, run the reverse diffusion process, and display a set of intermediate generated images using Matplotlib.
