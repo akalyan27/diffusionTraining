@@ -10,13 +10,13 @@ The goal of this project is to implement a complete, functional diffusion model,
 
 ## Key Features
 
-Custom Scheduler: Implements a cosine noise schedule for stable and high-quality diffusion steps.
+- Custom Scheduler: Implements a cosine noise schedule for stable and high-quality diffusion steps.
 
-Modular U-Net: Features a U-Net backbone with integrated Transformer Positional Embeddings for timestep conditioning and Class Embeddings for conditional generation.
+- Modular U-Net: Features a U-Net backbone with integrated Transformer Positional Embeddings for timestep conditioning and Class Embeddings for conditional generation.
 
-Attention Mechanisms: Includes self-attention blocks within the U-Net at lower resolutions to capture long-range dependencies in the feature maps.
+- Attention Mechanisms: Includes self-attention blocks within the U-Net at lower resolutions to capture long-range dependencies in the feature maps.
 
-Full Pipeline: Contains functions for the forward diffusion process, reverse sampling, and training loop components.
+- Full Pipeline: Contains functions for the forward diffusion process, reverse sampling, and training loop components.
 
 ## Architecture
 
@@ -26,37 +26,37 @@ The model is divided into three primary Python files for maximum clarity and org
 
 - Modified UNet architecture as described in the DDPM paper and implemented in https://github.com/mattroz/diffusion-ddpm/blob/main/src/model/unet.py
 
-The core neural network responsible for predicting the noise ($\epsilon$) added at each timestep. This is a modified U-Net that includes:
+- The core neural network responsible for predicting the noise ($\epsilon$) added at each timestep. This is a modified U-Net that includes:
 
-Timestep Conditioning: The diffusion timestep ($t$) is encoded using TransformerPositionalEmbedding and injected into every ResNetBlock.
+- Timestep Conditioning: The diffusion timestep ($t$) is encoded using TransformerPositionalEmbedding and injected into every ResNetBlock.
 
-Class Conditioning: Includes a nn.Embedding layer to allow for class-conditional image generation (e.g., generating a specific type of image like "cat" or "car").
+- Class Conditioning: Includes a nn.Embedding layer to allow for class-conditional image generation (e.g., generating a specific type of image like "cat" or "car").
 
-Downsample/Upsample Blocks: Uses standard convolutional blocks with Group Normalization and SiLU activation.
+- Downsample/Upsample Blocks: Uses standard convolutional blocks with Group Normalization and SiLU activation.
 
 ### layers.py
 
-Contains all the reusable building blocks for the U-Net:
+- Contains all the reusable building blocks for the U-Net:
 
-TransformerPositionalEmbedding: Sinusoidal embedding layer for timesteps.
+- TransformerPositionalEmbedding: Sinusoidal embedding layer for timesteps.
 
-ResNetBlock: Wide ResNet block with timestep embedding injection.
+- ResNetBlock: Wide ResNet block with timestep embedding injection.
 
-ConvBlock, AttentionBlock: Standard utility modules for convolution and self-attention.
+- ConvBlock, AttentionBlock: Standard utility modules for convolution and self-attention.
 
-ConvDownBlock, ConvUpBlock, AttentionDownBlock, AttentionUpBlock: Combination blocks used to structure the encoder and decoder paths of the U-Net.
+- ConvDownBlock, ConvUpBlock, AttentionDownBlock, AttentionUpBlock: Combination blocks used to structure the encoder and decoder paths of the U-Net.
 
 ### myDiffusionModel.py
 
-This file handles the high-level diffusion process logic:
+- This file handles the high-level diffusion process logic:
 
-cosine_beta_schedule: Generates the variance schedule ($\beta_t$) and pre-calculates the necessary $\alpha$ terms ($\alpha_t$ and $\bar{\alpha}_t$).
+- cosine_beta_schedule: Generates the variance schedule ($\beta_t$) and pre-calculates the necessary $\alpha$ terms ($\alpha_t$ and $\bar{\alpha}_t$).
 
-forward_diffusion: Adds noise to a clean image ($x_0$) to produce a noisy image ($x_t$) at a given timestep ($t$).
+- forward_diffusion: Adds noise to a clean image ($x_0$) to produce a noisy image ($x_t$) at a given timestep ($t$).
 
-reverse_sampling: Implements the iterative reverse process to sample a clean image from pure noise.
+- reverse_sampling: Implements the iterative reverse process to sample a clean image from pure noise.
 
-Training/Testing Functions: Includes the primary data loading, model instantiation, and visualization logic.
+- Training/Testing Functions: Includes the primary data loading, model instantiation, and visualization logic.
 
 ## Setup and Installation
 
@@ -74,7 +74,7 @@ Clone the repository:
 ```
 
 Install dependencies:
-The project relies on PyTorch, NumPy, and Matplotlib. All required packages are listed in requirements.txt.
+- The project relies on PyTorch, NumPy, and Matplotlib. All required packages are listed in requirements.txt.
 
 ```bash
  pip install -r requirements.txt 
